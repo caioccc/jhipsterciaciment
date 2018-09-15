@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="item">
+            <h2><span>Item</span> {{item.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Quantidade</span></dt>
+                <dd>
+                    <span>{{item.quantidade}}</span>
+                </dd>
+                <dt><span>Valor Item</span></dt>
+                <dd>
+                    <span>{{item.valorItem}}</span>
+                </dd>
+                <dt><span>Pedido</span></dt>
+                <dd>
+                    <div *ngIf="item.pedidoId">
+                        <a [routerLink]="['/pedido', item.pedidoId, 'view']">{{item.pedidoId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Produto</span></dt>
+                <dd>
+                    <div *ngIf="item.produtoId">
+                        <a [routerLink]="['/produto', item.produtoId, 'view']">{{item.produtoId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/item', item.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

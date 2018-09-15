@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entrada">
+            <h2><span>Entrada</span> {{entrada.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Cliente</span></dt>
+                <dd>
+                    <span>{{entrada.cliente}}</span>
+                </dd>
+                <dt><span>Valor Total</span></dt>
+                <dd>
+                    <span>{{entrada.valorTotal}}</span>
+                </dd>
+                <dt><span>Valor Pago</span></dt>
+                <dd>
+                    <span>{{entrada.valorPago}}</span>
+                </dd>
+                <dt><span>Data</span></dt>
+                <dd>
+                    <span>{{entrada.data}}</span>
+                </dd>
+                <dt><span>Forma Pagamento</span></dt>
+                <dd>
+                    <span>{{entrada.formaPagamento}}</span>
+                </dd>
+                <dt><span>Cor</span></dt>
+                <dd>
+                    <span>{{entrada.cor}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entrada', entrada.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

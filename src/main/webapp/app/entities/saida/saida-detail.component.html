@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="saida">
+            <h2><span>Saida</span> {{saida.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Eminente</span></dt>
+                <dd>
+                    <span>{{saida.eminente}}</span>
+                </dd>
+                <dt><span>Razao</span></dt>
+                <dd>
+                    <span>{{saida.razao}}</span>
+                </dd>
+                <dt><span>Valor</span></dt>
+                <dd>
+                    <span>{{saida.valor}}</span>
+                </dd>
+                <dt><span>Forma</span></dt>
+                <dd>
+                    <span>{{saida.forma}}</span>
+                </dd>
+                <dt><span>Data</span></dt>
+                <dd>
+                    <span>{{saida.data}}</span>
+                </dd>
+                <dt><span>Observacoes</span></dt>
+                <dd>
+                    <span>{{saida.observacoes}}</span>
+                </dd>
+                <dt><span>Cor</span></dt>
+                <dd>
+                    <span>{{saida.cor}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/saida', saida.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

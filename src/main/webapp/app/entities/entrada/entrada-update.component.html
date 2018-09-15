@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-entrada-heading">Create or edit a Entrada</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!entrada.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="entrada.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cliente">Cliente</label>
+                    <input type="text" class="form-control" name="cliente" id="field_cliente"
+                        [(ngModel)]="entrada.cliente" required/>
+                    <div [hidden]="!(editForm.controls.cliente?.dirty && editForm.controls.cliente?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cliente?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valorTotal">Valor Total</label>
+                    <input type="number" class="form-control" name="valorTotal" id="field_valorTotal"
+                        [(ngModel)]="entrada.valorTotal" required/>
+                    <div [hidden]="!(editForm.controls.valorTotal?.dirty && editForm.controls.valorTotal?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.valorTotal?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.valorTotal?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valorPago">Valor Pago</label>
+                    <input type="number" class="form-control" name="valorPago" id="field_valorPago"
+                        [(ngModel)]="entrada.valorPago" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_data">Data</label>
+                    <div class="d-flex">
+                        <input id="field_data" type="datetime-local" class="form-control" name="data" [(ngModel)]="data"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_formaPagamento">Forma Pagamento</label>
+                    <select class="form-control" name="formaPagamento" [(ngModel)]="entrada.formaPagamento" id="field_formaPagamento" >
+                        <option value="CHEQUE">CHEQUE</option>
+                        <option value="DUPLICATA">DUPLICATA</option>
+                        <option value="AVISTA">AVISTA</option>
+                        <option value="BOLETO">BOLETO</option>
+                        <option value="DINHEIRO">DINHEIRO</option>
+                        <option value="CARTAO">CARTAO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cor">Cor</label>
+                    <select class="form-control" name="cor" [(ngModel)]="entrada.cor" id="field_cor" >
+                        <option value="VERMELHO">VERMELHO</option>
+                        <option value="VERDE">VERDE</option>
+                        <option value="AZUL">AZUL</option>
+                        <option value="AMARELO">AMARELO</option>
+                        <option value="ROXO">ROXO</option>
+                    </select>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

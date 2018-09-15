@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-produto-heading">Create or edit a Produto</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!produto.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="produto.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_codigo">Codigo</label>
+                    <input type="text" class="form-control" name="codigo" id="field_codigo"
+                        [(ngModel)]="produto.codigo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                        [(ngModel)]="produto.nome" required/>
+                    <div [hidden]="!(editForm.controls.nome?.dirty && editForm.controls.nome?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nome?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipo">Tipo</label>
+                    <input type="text" class="form-control" name="tipo" id="field_tipo"
+                        [(ngModel)]="produto.tipo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_categoria">Categoria</label>
+                    <input type="text" class="form-control" name="categoria" id="field_categoria"
+                        [(ngModel)]="produto.categoria" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_peso">Peso</label>
+                    <input type="text" class="form-control" name="peso" id="field_peso"
+                        [(ngModel)]="produto.peso" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_marca">Marca</label>
+                    <input type="text" class="form-control" name="marca" id="field_marca"
+                        [(ngModel)]="produto.marca" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                        [(ngModel)]="produto.descricao" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_instrucoes">Instrucoes</label>
+                    <input type="text" class="form-control" name="instrucoes" id="field_instrucoes"
+                        [(ngModel)]="produto.instrucoes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoEmbalagem">Tipo Embalagem</label>
+                    <input type="text" class="form-control" name="tipoEmbalagem" id="field_tipoEmbalagem"
+                        [(ngModel)]="produto.tipoEmbalagem" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

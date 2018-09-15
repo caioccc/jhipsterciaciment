@@ -1,0 +1,48 @@
+{
+    "name": "Entrada",
+    "fields": [
+        {
+            "fieldName": "cliente",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "valorTotal",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "valorPago",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "formaPagamento",
+            "fieldType": "Forma",
+            "fieldValues": "CHEQUE,DUPLICATA,AVISTA,BOLETO,DINHEIRO,CARTAO"
+        },
+        {
+            "fieldName": "cor",
+            "fieldType": "Cor",
+            "fieldValues": "VERMELHO,VERDE,AZUL,AMARELO,ROXO"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180915161723",
+    "entityTableName": "entrada",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

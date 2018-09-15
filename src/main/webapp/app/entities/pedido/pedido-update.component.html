@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-pedido-heading">Create or edit a Pedido</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!pedido.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="pedido.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_formatoEntrega">Formato Entrega</label>
+                    <select class="form-control" name="formatoEntrega" [(ngModel)]="pedido.formatoEntrega" id="field_formatoEntrega" >
+                        <option value="COM_DESCARREGO">COM_DESCARREGO</option>
+                        <option value="SEM_DESCARREGO">SEM_DESCARREGO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_data">Data</label>
+                    <div class="d-flex">
+                        <input id="field_data" type="datetime-local" class="form-control" name="data" [(ngModel)]="data"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valorUnitario">Valor Unitario</label>
+                    <input type="number" class="form-control" name="valorUnitario" id="field_valorUnitario"
+                        [(ngModel)]="pedido.valorUnitario" required/>
+                    <div [hidden]="!(editForm.controls.valorUnitario?.dirty && editForm.controls.valorUnitario?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.valorUnitario?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.valorUnitario?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_prazo">Prazo</label>
+                    <input type="text" class="form-control" name="prazo" id="field_prazo"
+                        [(ngModel)]="pedido.prazo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_foiEntregue">Foi Entregue</label>
+                    <input type="checkbox" class="form-control" name="foiEntregue" id="field_foiEntregue"
+                        [(ngModel)]="pedido.foiEntregue" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_foiVisualizado">Foi Visualizado</label>
+                    <input type="checkbox" class="form-control" name="foiVisualizado" id="field_foiVisualizado"
+                        [(ngModel)]="pedido.foiVisualizado" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_saiuEntrega">Saiu Entrega</label>
+                    <input type="checkbox" class="form-control" name="saiuEntrega" id="field_saiuEntrega"
+                        [(ngModel)]="pedido.saiuEntrega" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_observacoes">Observacoes</label>
+                    <input type="text" class="form-control" name="observacoes" id="field_observacoes"
+                        [(ngModel)]="pedido.observacoes" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cliente">Cliente</label>
+                    <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="pedido.clienteId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clienteOption.id" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vendedor">Vendedor</label>
+                    <select class="form-control" id="field_vendedor" name="vendedor" [(ngModel)]="pedido.vendedorId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="vendedorOption.id" *ngFor="let vendedorOption of vendedors; trackBy: trackVendedorById">{{vendedorOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

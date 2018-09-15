@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pedido">
+            <h2><span>Pedido</span> {{pedido.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Formato Entrega</span></dt>
+                <dd>
+                    <span>{{pedido.formatoEntrega}}</span>
+                </dd>
+                <dt><span>Data</span></dt>
+                <dd>
+                    <span>{{pedido.data}}</span>
+                </dd>
+                <dt><span>Valor Unitario</span></dt>
+                <dd>
+                    <span>{{pedido.valorUnitario}}</span>
+                </dd>
+                <dt><span>Prazo</span></dt>
+                <dd>
+                    <span>{{pedido.prazo}}</span>
+                </dd>
+                <dt><span>Foi Entregue</span></dt>
+                <dd>
+                    <span>{{pedido.foiEntregue}}</span>
+                </dd>
+                <dt><span>Foi Visualizado</span></dt>
+                <dd>
+                    <span>{{pedido.foiVisualizado}}</span>
+                </dd>
+                <dt><span>Saiu Entrega</span></dt>
+                <dd>
+                    <span>{{pedido.saiuEntrega}}</span>
+                </dd>
+                <dt><span>Observacoes</span></dt>
+                <dd>
+                    <span>{{pedido.observacoes}}</span>
+                </dd>
+                <dt><span>Cliente</span></dt>
+                <dd>
+                    <div *ngIf="pedido.clienteId">
+                        <a [routerLink]="['/cliente', pedido.clienteId, 'view']">{{pedido.clienteId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Vendedor</span></dt>
+                <dd>
+                    <div *ngIf="pedido.vendedorId">
+                        <a [routerLink]="['/vendedor', pedido.vendedorId, 'view']">{{pedido.vendedorId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pedido', pedido.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

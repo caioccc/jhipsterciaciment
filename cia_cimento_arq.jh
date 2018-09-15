@@ -1,0 +1,99 @@
+
+
+
+enum Forma {
+    CHEQUE, DUPLICATA, AVISTA, BOLETO, DINHEIRO, CARTAO
+}
+
+enum Formato {
+    COM_DESCARREGO, SEM_DESCARREGO
+}
+
+enum Cor {
+    VERMELHO, VERDE, AZUL, AMARELO, ROXO
+}
+
+entity Entrada {
+	cliente String required,
+    valorTotal Long required,
+    valorPago Long,
+    data Instant,
+    formaPagamento Forma,
+    cor Cor
+}
+
+entity Saida {
+	eminente String,
+	razao String,
+    valor Long required,
+    forma Forma,
+    data Instant,
+    observacoes String,
+    cor Cor
+}
+
+entity Cliente {
+	nome String required,
+    telefone String,
+    endereco String
+}
+
+
+entity Vendedor {
+	nome String required,
+    email String,
+    telefone String
+}
+
+entity Pedido {
+	formatoEntrega Formato,
+    data Instant,
+    valorUnitario Long required,
+    prazo String,
+    foiEntregue Boolean,
+    foiVisualizado Boolean,
+    saiuEntrega Boolean,
+    observacoes String
+}
+
+entity Item {
+	quantidade String required,
+    valorItem Long
+}
+
+entity Produto {
+	codigo String,
+    nome String required,
+    tipo String,
+    categoria String,
+    peso String,
+    marca String,
+    descricao String,
+    instrucoes String,
+    tipoEmbalagem String
+}
+
+relationship ManyToMany {
+	Vendedor{cliente(nome)} to Cliente
+}
+
+relationship OneToMany {
+	Cliente{pedido} to Pedido,
+	Pedido{item} to Item
+}
+
+relationship OneToOne {
+	Item{produto} to Produto,
+    Pedido{vendedor} to Vendedor
+}
+
+paginate * with pagination
+
+dto * with mapstruct
+
+service all with serviceClass
+
+search * with elasticsearch
+
+
+

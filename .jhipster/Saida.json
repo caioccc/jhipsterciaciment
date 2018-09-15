@@ -1,0 +1,49 @@
+{
+    "name": "Saida",
+    "fields": [
+        {
+            "fieldName": "eminente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "razao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valor",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "forma",
+            "fieldType": "Forma",
+            "fieldValues": "CHEQUE,DUPLICATA,AVISTA,BOLETO,DINHEIRO,CARTAO"
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "observacoes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cor",
+            "fieldType": "Cor",
+            "fieldValues": "VERMELHO,VERDE,AZUL,AMARELO,ROXO"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180915161724",
+    "entityTableName": "saida",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}
