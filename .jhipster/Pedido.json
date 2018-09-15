@@ -1,0 +1,73 @@
+{
+    "name": "Pedido",
+    "fields": [
+        {
+            "fieldName": "formatoEntrega",
+            "fieldType": "Formato",
+            "fieldValues": "COM_DESCARREGO,SEM_DESCARREGO"
+        },
+        {
+            "fieldName": "data",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "valorUnitario",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prazo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "foiEntregue",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "foiVisualizado",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "saiuEntrega",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "observacoes",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "cliente",
+            "otherEntityName": "cliente",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "vendedor",
+            "otherEntityName": "vendedor",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "pedido"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "item",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "pedido"
+        }
+    ],
+    "changelogDate": "20180915161727",
+    "entityTableName": "pedido",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

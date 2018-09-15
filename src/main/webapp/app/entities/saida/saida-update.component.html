@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-saida-heading">Create or edit a Saida</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!saida.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="saida.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_eminente">Eminente</label>
+                    <input type="text" class="form-control" name="eminente" id="field_eminente"
+                        [(ngModel)]="saida.eminente" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_razao">Razao</label>
+                    <input type="text" class="form-control" name="razao" id="field_razao"
+                        [(ngModel)]="saida.razao" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valor">Valor</label>
+                    <input type="number" class="form-control" name="valor" id="field_valor"
+                        [(ngModel)]="saida.valor" required/>
+                    <div [hidden]="!(editForm.controls.valor?.dirty && editForm.controls.valor?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.valor?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.valor?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_forma">Forma</label>
+                    <select class="form-control" name="forma" [(ngModel)]="saida.forma" id="field_forma" >
+                        <option value="CHEQUE">CHEQUE</option>
+                        <option value="DUPLICATA">DUPLICATA</option>
+                        <option value="AVISTA">AVISTA</option>
+                        <option value="BOLETO">BOLETO</option>
+                        <option value="DINHEIRO">DINHEIRO</option>
+                        <option value="CARTAO">CARTAO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_data">Data</label>
+                    <div class="d-flex">
+                        <input id="field_data" type="datetime-local" class="form-control" name="data" [(ngModel)]="data"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_observacoes">Observacoes</label>
+                    <input type="text" class="form-control" name="observacoes" id="field_observacoes"
+                        [(ngModel)]="saida.observacoes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cor">Cor</label>
+                    <select class="form-control" name="cor" [(ngModel)]="saida.cor" id="field_cor" >
+                        <option value="VERMELHO">VERMELHO</option>
+                        <option value="VERDE">VERDE</option>
+                        <option value="AZUL">AZUL</option>
+                        <option value="AMARELO">AMARELO</option>
+                        <option value="ROXO">ROXO</option>
+                    </select>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

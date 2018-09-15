@@ -1,0 +1,38 @@
+{
+    "name": "Cliente",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endereco",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "pedido",
+            "otherEntityName": "pedido",
+            "otherEntityRelationshipName": "cliente"
+        }
+    ],
+    "changelogDate": "20180915161725",
+    "entityTableName": "cliente",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}
